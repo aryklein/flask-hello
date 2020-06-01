@@ -45,11 +45,11 @@ jobs:
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
-        run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u ${{ secret.DOCKER_USER }} --password-stdin
+        run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
 
       - name: Push image
         run: |
-          IMAGE_ID=${{ secret.DOCKER_USER }}/$IMAGE_NAME
+          IMAGE_ID=${{ secrets.DOCKER_USER }}/$IMAGE_NAME
           
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
