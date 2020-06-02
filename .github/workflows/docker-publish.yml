@@ -6,8 +6,10 @@ on:
     branches:
       - master
 
-  # Run tests for any PRs.
+  # Run tests only for master PRs.
   pull_request:
+    branches:
+      - master
 
 env:
   IMAGE_NAME: flask-hello
@@ -17,6 +19,7 @@ jobs:
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
 
     steps:
       - uses: actions/checkout@v2
