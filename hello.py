@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    return make_response('Hello World!', http.HTTPStatus.OK)
+    return make_response('Hello World', http.HTTPStatus.OK)
 
 @app.route('/<path>')
 def other_page(path):
